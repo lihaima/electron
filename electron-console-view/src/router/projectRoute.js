@@ -53,34 +53,28 @@ var ability = manage.routeInfo().path("/ability")
     .icon('el-icon-school')
     .build();
 
-ability.createChildrenRoute().path("/ability/resourcesRegister")
-    .viewImport("../model/mainview/mainview")
-    .names("resourcesRegister")
-    .title("静态资源代理")
-    .icon('el-icon-school')
-    .modelImport("./data/resourcesRegister.js")
+
+var routeMessage = [
+    {path:"/ability/resourcesRegister",viewImport:"../model/mainview/mainview",names:"resourcesRegister",title:"静态资源代理",icon:'el-icon-school',modelImport:"./data/resourcesRegister.js"},
+    {path:"/ability/choice/loadBalancing",viewImport:"../model/mainview/mainview",names:"loadBalancing",title:"负载均衡",icon:'el-icon-school',modelImport:"./data/choice/loadBalancing.js"},
+    {path:"/ability/choice/partition",viewImport:"../model/mainview/mainview",names:"partition",title:"资源隔离",icon:'el-icon-school',modelImport:"./data/choice/partition.js"},
+    {path:"/ability/discern/condition",viewImport:"../model/mainview/mainview",names:"conditionRouter",title:"条件路由",icon:'el-icon-school',modelImport:"./data/discern/conditionRouter.js"},
+    {path:"/ability/errer/errerResult",viewImport:"../model/mainview/mainview",names:"errerResult",title:"异常返回",icon:'el-icon-school',modelImport:"./data/errer/errerResult.js"},
+    {path:"/ability/register/exampleRegister",viewImport:"../model/mainview/mainview",names:"exampleRegister",title:"实例注册",icon:'el-icon-school',modelImport:"./data/register/exampleRegister.js"},
+    {path:"/ability/result/dataInjection",viewImport:"../model/mainview/mainview",names:"dataInjection",title:"数据注入",icon:'el-icon-school',modelImport:"./data/result/dataInjection.js"},
+    {path:"/ability/security/authentication",viewImport:"../model/mainview/mainview",names:"authentication",title:"认证与鉴权",icon:'el-icon-school',modelImport:"./data/security/authentication.js"}
+]
+
+routeMessage.forEach((v)=>{
+    ability.createChildrenRoute()
+    .path(v.path)
+    .viewImport(v.viewImport)
+    .names(v.names)
+    .title(v.title)
+    .icon(v.icon)
+    .modelImport(v.modelImport)
     .build();
-
-ability.createChildrenRoute().path("/ability/choice/loadBalancing").viewImport("../model/mainview/mainview").names("loadBalancing")
-    .title("负载均衡").icon('el-icon-school').modelImport("./data/choice/loadBalancing.js").build();
-
-ability.createChildrenRoute().path("/ability/choice/partition").viewImport("../model/mainview/mainview").names("partition")
-    .title("资源隔离").icon('el-icon-school').modelImport("./data/choice/partition.js").build();
-
-ability.createChildrenRoute().path("/ability/discern/condition").viewImport("../model/mainview/mainview").names("conditionRouter")
-    .title("条件路由").icon('el-icon-school').modelImport("./data/discern/conditionRouter.js").build();
-
-ability.createChildrenRoute().path("/ability/errer/errerResult").viewImport("../model/mainview/mainview").names("errerResult")
-    .title("异常返回").icon('el-icon-school').modelImport("./data/errer/errerResult.js").build();
-
-ability.createChildrenRoute().path("/ability/register/exampleRegister").viewImport("../model/mainview/mainview").names("exampleRegister")
-    .title("实例注册").icon('el-icon-school').modelImport("./data/register/exampleRegister.js").build();
-
-ability.createChildrenRoute().path("/ability/result/dataInjection").viewImport("../model/mainview/mainview").names("dataInjection")
-    .title("数据注入").icon('el-icon-school').modelImport("./data/result/dataInjection.js").build();
-
-ability.createChildrenRoute().path("/ability/security/authentication").viewImport("../model/mainview/mainview").names("authentication")
-    .title("认证与鉴权").icon('el-icon-school').modelImport("./data/security/authentication.js").build();
+})
 
 
 var organization = manage.routeInfo().path("/organization")
